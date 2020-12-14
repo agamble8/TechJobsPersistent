@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TechJobsPersistent.Models;
 
 namespace TechJobsPersistent.ViewModels
 {
@@ -13,6 +14,10 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Employer location is required")]
         public string Location { get; set; }
 
+        //public AddEmployerViewModel(Employer theEmployer)
+        //{
+
+        //}
         public AddEmployerViewModel()
         {
 

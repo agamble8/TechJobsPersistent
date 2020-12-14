@@ -60,10 +60,13 @@ namespace TechJobsPersistent.Controllers
         // Step 2.2.5
         public IActionResult About(int id)
         {
-            Employer theEmployer = context.Employers
-                .Where(emp => emp.Id == id);
+            List<Employer> theEmployer = context.Employers
+                .Where(j => j.Id == id)
+                .ToList();
+            //Employer theEmployer = context.Employers
+            //    .Where(emp => emp.Id == id);
 
-            AddEmployerViewModel viewModel = new AddEmployerViewModel(theEmployer);
+            //AddEmployerViewModel viewModel = new AddEmployerViewModel(theEmployer);
 
             return View(theEmployer);
         }
