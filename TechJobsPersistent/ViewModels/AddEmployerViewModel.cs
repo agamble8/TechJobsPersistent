@@ -14,10 +14,6 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Employer location is required")]
         public string Location { get; set; }
 
-        //public AddEmployerViewModel(Employer theEmployer)
-        //{
-
-        //}
         public AddEmployerViewModel()
         {
 
