@@ -15,9 +15,24 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Employer must be selected")]
         public int EmployerId { get; set; }
         public List<SelectListItem> Employers { get; set; }
+        // Step 3.1
+        public List<Skill> Skills { get; set; }
 
-        public AddJobViewModel(List<Employer> possibleEmployers)
+        public AddJobViewModel(List<Employer> possibleEmployers, List<Skill> possibleSkills)
         {
+            //Skills = new List<Skill>();
+            Skills = possibleSkills;
+
+            //foreach (var skill in possibleSkills)
+            //{
+            //    Skills.Add(
+            //        new SelectListItem
+            //        {
+            //            Value = skill.Id.ToString(),
+            //            Text = skill.Name
+            //        });
+            //}
+
             Employers = new List<SelectListItem>();
 
             foreach (var employer in possibleEmployers)
@@ -27,7 +42,7 @@ namespace TechJobsPersistent.ViewModels
                     {
                         Value = employer.Id.ToString(),
                         Text = employer.Name
-                    }); 
+                    });
             }
         }
 
