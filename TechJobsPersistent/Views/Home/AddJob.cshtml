@@ -24,7 +24,7 @@
         <label>Skills Required</label>
         @foreach (var skill in @Model.Skills)
         {
-            <input type="checkbox" name="selectedSkills" value="@skill.Id" />
+            <input type="checkbox" name="selectedSkills" value="Skills.Name" />
         }  
         <a asp-controller="Skill" asp-action="Add">Add New Skill</a>
     </div>

@@ -20,7 +20,6 @@ namespace TechJobsPersistent.ViewModels
 
         public AddJobViewModel(List<Employer> possibleEmployers, List<Skill> possibleSkills)
         {
-            //Skills = new List<Skill>();
             Skills = possibleSkills;
 
             //foreach (var skill in possibleSkills)
