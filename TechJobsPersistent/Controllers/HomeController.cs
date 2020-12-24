@@ -41,34 +41,41 @@ namespace TechJobsPersistent.Controllers
         }
 
         //Step 2.3.2 added skills handling
+        [HttpPost]
         public IActionResult ProcessAddJobForm(AddJobViewModel viewModel, string[] selectedSkills)
         {
             if (ModelState.IsValid)
             {
-                Employer theEmployer = context.Employers.Find(viewModel.EmployerId);
+                List<JobSkill> newJobSkills = new List<JobSkill>();
+
+                //Employer theEmployer = context.Employers.Find(viewModel.EmployerId);
                 Job newJob = new Job
                 {
                     Name = viewModel.Name,
-                    Employer = theEmployer
+                    EmployerId = viewModel.EmployerId,
+                    Employer = context.Employers.Find(viewModel.EmployerId)
                 };
 
-                foreach (string skill in selectedSkills)
-                {                      
-                    JobSkill newSkill = new JobSkill
+               
+                    foreach (string skill in selectedSkills)
                     {
-                        JobId = newJob.Id,
-                        SkillId = Int32.Parse(skill)
-                        //SkillId = Int32.Parse(selectedSkills[i])
-
+                        JobSkill newSkill = new JobSkill
+                        {
+                            JobId = newJob.Id,
+                            SkillId = Int32.Parse(skill)
+                        };
+                    newJobSkills.Add(newSkill);
+                    context.JobSkills.Add(newSkill);
                     };
-                }
+
+                newJob.JobSkills = newJobSkills;
 
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
 
                 return Redirect("/Home");
             }
-            return View();
+            return View("Add", viewModel);
         }
 
         public IActionResult Detail(int id)

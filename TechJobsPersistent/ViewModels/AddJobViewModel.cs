@@ -18,19 +18,9 @@ namespace TechJobsPersistent.ViewModels
         // Step 3.1
         public List<Skill> Skills { get; set; }
 
-        public AddJobViewModel(List<Employer> possibleEmployers, List<Skill> possibleSkills)
+        public AddJobViewModel(List<Employer> possibleEmployers, List<Skill> allSkills)
         {
-            Skills = possibleSkills;
-
-            //foreach (var skill in possibleSkills)
-            //{
-            //    Skills.Add(
-            //        new SelectListItem
-            //        {
-            //            Value = skill.Id.ToString(),
-            //            Text = skill.Name
-            //        });
-            //}
+            Skills = allSkills;
 
             Employers = new List<SelectListItem>();
 
