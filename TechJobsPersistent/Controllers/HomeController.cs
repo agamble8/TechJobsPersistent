@@ -46,9 +46,6 @@ namespace TechJobsPersistent.Controllers
         {
             if (ModelState.IsValid)
             {
-                List<JobSkill> newJobSkills = new List<JobSkill>();
-
-                //Employer theEmployer = context.Employers.Find(viewModel.EmployerId);
                 Job newJob = new Job
                 {
                     Name = viewModel.Name,
@@ -59,16 +56,14 @@ namespace TechJobsPersistent.Controllers
                
                     foreach (string skill in selectedSkills)
                     {
-                        JobSkill newSkill = new JobSkill
-                        {
-                            JobId = newJob.Id,
-                            SkillId = Int32.Parse(skill)
+                    JobSkill newSkill = new JobSkill
+                    {
+                        JobId = newJob.Id,
+                        Job = newJob,
+                        SkillId = Int32.Parse(skill)
                         };
-                    newJobSkills.Add(newSkill);
                     context.JobSkills.Add(newSkill);
                     };
-
-                newJob.JobSkills = newJobSkills;
 
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
